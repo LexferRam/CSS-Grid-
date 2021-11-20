@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
+:root{
+  --bg-fondo-items: rgb(255, 150, 150);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper > div{
+  background: #eee;
+  padding:1em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper > div:nth-child(odd){
+  background: #ddd;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper{
+  display:grid;
+ /* grid-template-columns: 1fr 1fr 1fr; *//*60% 30% 10% */
+  grid-template-columns: repeat(3, 1fr);  /* 3, 1fr 2fr */
+  /*
+  column-gap: 1em;
+  row-gap: 1em;
+  */
+  gap: 1em;
+  /* grid-auto-rows:250px; */ /*cada div hijo va a tener 250px de alto(row)*/
+  grid-auto-rows: minmax(100px, auto);/*cada fila va a tener un min de 100px de alto y si su contenido lo obliga a tener mas height entonce se ajusta el height*/
+}
+
+.nested{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+/* ********************************************************************************************* */
+/* ******************************* WRAPPER 2 *****************************************************/
+/* ********************************************************************************************* */
+.wrapper2 > div{
+  background: --bg-fondo-items;
+  padding:1em;
+}
+
+.wrapper2 > div:nth-child(odd){
+  background: #ddd;
+}
+.wrapper2{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px,1fr)) ; 
+  grid-auto-rows: minmax(200px, auto);/*como valor minimo tendra un height de 100px y como maximo se ajustara el height*/
+  gap: 1em;
+  justify-items: stretch; /*start-center-end-stretch*/
+  align-items:stretch;
+}
+
+/* .box1{
+  grid-column: 1/3;
+  grid-row:1/3
+}
+.box2{
+  grid-column: 3;
+  grid-row:1/3
+}
+.box3{
+  grid-column: 2/4;
+  grid-row:3
+}
+.box4{
+  grid-column: 1;
+  grid-row:2/4;
+  border: 1px solid #333;
+} */
+
+/* ********************************************************************************************* */
+/* ******************************* WRAPPER 3*****************************************************/
+/* ********************************************************************************************* */
+
+.wrapper3{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.fila-par{
+  display: grid;
+  grid-template-columns: repeat(8,100px);
+  grid-template-rows: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.fila-par > div:nth-child(even){
+  background-color:#eee;
+}
+
+.fila-impar{
+  display: grid;
+  grid-template-columns: repeat(8,100px);
+  grid-template-rows: 50px;
+}
+
+.fila-impar > div:nth-child(odd){
+  background-color:#eee;
+}
+
+.fila-par>div, .fila-impar>div{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+/* ********************************************************************************************* */
+/* ******************************* WRAPPER 4*****************************************************/
+/* ********************************************************************************************* */
+
+.wrapper4 > div{
+  background: #eee;
+  padding:1em;
+}
+
+.wrapper4 > div:nth-child(odd){
+  background: #ddd;
+}
+
+
+.wrapper4{
+  display:grid;
+  grid-template-areas: 
+    'header header header'
+    'content content content'
+    'footer footer footer'
+  ;
+}
+
+.item1{
+  grid-area: header;
+}
+.item2{
+  grid-area: content;
+}
+.item3{
+  grid-area: footer;
+}
+.item4{
+  grid-area: aside;
+}
+
+@media(max-width:360px){
+  .wrapper4{
+    display:grid;
+    grid-template-areas: 
+      'header header header'
+      'content content content'
+      'aside aside aside'
+      'footer footer footer'
+    ;
   }
 }
+
+@media(min-width:361px){
+  .wrapper4{
+    display:grid;
+    grid-template-areas: 
+      'header header header'
+      'content content aside'
+      'footer footer footer'
+    ;
+  }
+}
+
+@media(min-width:500px){
+  .wrapper4{
+    display:grid;
+    grid-template-areas: 
+      'header header aside'
+      'content content aside'
+      'footer footer aside'
+    ;
+  }
+}
+
+
