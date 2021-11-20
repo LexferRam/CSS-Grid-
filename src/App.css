@@ -1,3 +1,9 @@
+*,*::before,*::after{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0;
+}
+
 :root{
   --bg-fondo-items: rgb(255, 150, 150);
 }

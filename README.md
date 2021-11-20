@@ -27,3 +27,6 @@ simbolos unicode de ajedrez
 ### funcion repeat()
 
 repeat([cant. de filas/columnas],[alto/ancho de cada item])
+
+
+### centrar un formulario sobre una imagen usando Grid CSS revisar App2.js
